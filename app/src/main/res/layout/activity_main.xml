@@ -5,15 +5,48 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFDD0"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <LinearLayout
+        android:layout_width="317dp"
+        android:layout_height="316dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.518">
+
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="236dp"
+            android:layout_height="201dp"
+            android:layout_marginBottom="34dp"
+            android:contentDescription="Logotipo Aura"
+            android:src="@drawable/Aura2" />
+
+        <TextView
+            android:id="@+id/txt_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AURA"
+            android:textColor="#3C3C6C"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_subtitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Seu espaço de segurança e apoio"
+            android:textColor="#3C3C6C"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
