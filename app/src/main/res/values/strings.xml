@@ -1,5 +1,26 @@
 <resources>
     <string name="app_name">Aura</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back">Voltar</string>
+    <string name="bem_vinda">Bem-Vinda!</string>
+    <string name="bem_vindo_estudante">Bem-Vindo!\nEstudante de Psicologia</string>
+    <string name="hint_nome">Nome</string>
+    <string name="hint_email">E-mail</string>
+    <string name="hint_senha">Senha</string>
+    <string name="hint_periodo">Período do Curso</string>
+    <string name="hint_email_institucional">E-mail Institucional</string>
+    <string name="btn_entrar">Entrar</string>
+    <string name="login_estudante">Login como estudante de Psicologia</string>
+    <string name="user_name">Flora Gonçalves</string>
+    <string name="menu_desabafos">Meus Desabafos</string>
+    <string name="menu_zonas">Zonas Pesquisadas</string>
+    <string name="menu_config">Configurações</string>
+    <string name="btn_sair">Sair</string>
+    <string name="title_desabafos">Meus Desabafos</string>
+    <string name="nav_map">Mapa</string>
+    <string name="nav_home">Início</string>
+    <string name="nav_fav">Favoritos</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="post_title">Como lidar com a ansiedade pós-trauma?</string>
+    <string name="post_author">Clara Gonçalves</string>
+    <string name="post_content">Oi, estou me sentindo muito ansiosa e com medo de sair de casa após um incidente. Alguma dica de como lidar com esses gatilhos?</string>
 </resources>

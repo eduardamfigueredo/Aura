@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.Aura" parent="Base.Theme.Aura" />
+
+    <style name="Circle">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
