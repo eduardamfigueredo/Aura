@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_map"
+        android:icon="@android:drawable/ic_menu_mapmode"
+        android:title="Mapa" />
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@android:drawable/ic_menu_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/nav_heart"
+        android:icon="@android:drawable/ic_menu_compass"
+        android:title="Apoio" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="Perfil" />
+</menu>
