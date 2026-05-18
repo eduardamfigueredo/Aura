@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_purple">
@@ -59,9 +60,11 @@
             android:layout_marginTop="24dp"
             android:background="@drawable/bg_edit_text"
             android:hint="@string/hint_nome"
-            android:paddingHorizontal="16dp"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:paddingHorizontal="16dp"
+            android:textColorHint="#5C6BC0"
+            tools:ignore="TextContrastCheck" />
 
         <EditText
             android:layout_width="match_parent"
@@ -92,7 +95,8 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            tools:ignore="VisualLintButtonSize" />
 
         <TextView
             android:layout_width="wrap_content"
