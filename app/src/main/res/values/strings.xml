@@ -24,4 +24,6 @@
     <string name="post_author">Clara Gonçalves</string>
     <string name="post_content">Oi, estou me sentindo muito ansiosa e com medo de sair de casa após um incidente. Alguma dica de como lidar com esses gatilhos?</string>
     <string name="aura">AURA</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
