@@ -9,17 +9,15 @@ class PostRepository {
     // Função para buscar todos os posts do banco de dados
     suspend fun buscarTodosOsPosts(): List<Post> {
         return withContext(Dispatchers.IO) {
-            SupabaseClientProvider.client.postgrest["posts"]
-                .select()
-                .decodeList<Post>()
+            val result = SupabaseClientProvider.client.postgrest.from("posts").select()
+            result.decodeList<Post>()
         }
     }
 
     // Função para salvar um novo post no banco de dados
     suspend fun salvarPost(post: Post) {
         withContext(Dispatchers.IO) {
-            SupabaseClientProvider.client.postgrest["posts"]
-                .insert(post)
+            SupabaseClientProvider.client.postgrest.from("posts").insert(post)
         }
     }
 }
