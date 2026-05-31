@@ -13,7 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.aura.R // ATENÇÃO: Altere aqui também para o nome do seu pacote!
+import com.example.aura.R
 import kotlinx.coroutines.delay
 
 @Composable

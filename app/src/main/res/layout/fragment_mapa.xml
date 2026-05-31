@@ -52,7 +52,8 @@
                 android:textSize="16sp"
                 android:textColorHint="#999999"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ic_search_lupa" />
+                app:layout_constraintStart_toEndOf="@id/ic_search_lupa"
+                android:importantForAutofill="no" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
@@ -73,55 +74,57 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_sheet_informacoes"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="340dp"
         android:background="@drawable/bg_rounded_bottom_sheet"
         android:padding="24dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <View
-            android:id="@+id/tracinho_arraste"
-            android:layout_width="36dp"
-            android:layout_height="4dp"
-            android:background="#3C3C6C"
+        <ImageView
+            android:id="@+id/setinha_arraste"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_back"
+            android:rotation="90"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#3C3C6C" />
 
         <TextView
             android:id="@+id/txt_titulo_sheet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="Informações sobre Registro"
-            android:textColor="#000000"
+            android:textColor="#3C3C6C"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tracinho_arraste" />
+            app:layout_constraintTop_toBottomOf="@id/setinha_arraste" />
 
         <TextView
             android:id="@+id/txt_detalhes_sheet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Bairro: Centro\nData Aproximada: Mai/2023"
-            android:textColor="#000000"
+            android:layout_marginTop="16dp"
+            android:text="Bairro: Marco\nTipo: Assalto\nData Aproximada: Mai/2023"
+            android:textColor="#3C3C6C"
             android:textSize="16sp"
-            android:lineSpacingExtra="6dp"
+            android:lineSpacingExtra="8dp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_titulo_sheet" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="40dp"
             android:text="*Esses dados são públicos e para fins de conscientização*"
-            android:textColor="#000000"
-            android:textSize="11sp"
+            android:textColor="#3C3C6C"
+            android:textSize="12sp"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="SmallSp" />
 
@@ -135,6 +138,6 @@
         android:background="#FFFDD0"
         app:itemIconTint="#3C3C6C"
         app:itemTextColor="#3C3C6C"
-        app:menu="@menu/bottom_navigation_menu" />
+        app:menu="@menu/bottom_nav_menu" />
 
-</androidx.coordinatorlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

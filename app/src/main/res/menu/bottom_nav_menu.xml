@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
-        android:id="@+id/nav_map"
-        android:icon="@android:drawable/ic_dialog_map"
-        android:title="@string/nav_map" />
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Início" />
+
     <item
-        android:id="@+id/nav_home"
-        android:icon="@android:drawable/ic_menu_today"
-        android:title="@string/nav_home" />
+        android:id="@+id/favoritoFragment"
+        android:icon="@drawable/ic_favorito"
+        android:title="Favorito" />
+
     <item
-        android:id="@+id/nav_favorites"
-        android:icon="@android:drawable/btn_star"
-        android:title="@string/nav_fav" />
+        android:id="@+id/mapsFragment"
+        android:icon="@drawable/ic_map"
+        android:title="Mapa" />
+
     <item
-        android:id="@+id/nav_profile"
-        android:icon="@android:drawable/ic_menu_myplaces"
-        android:title="@string/nav_profile" />
+        android:id="@+id/perfilFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="Perfil" />
 </menu>
