@@ -12,18 +12,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aura.PostAdapter
-import com.example.aura.PostRepository
-import com.example.aura.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
-import com.example.aura.Post
 
 class ForumFragment : Fragment() {
 
     private val repository = PostRepository()
     private lateinit var postAdapter: PostAdapter
     private var postsDoBanco: MutableList<Post> = mutableListOf()
+    private var recyclerView: RecyclerView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,16 +34,44 @@ class ForumFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_posts)
+        recyclerView = view.findViewById<RecyclerView>(R.id.rv_posts)
         val btnAdd = view.findViewById<ImageButton>(R.id.btn_add)
+        val bottomNavigation = view.findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
+        // SOLUÇÃO: Seleciona o terceiro ícone (Fórum/Infinito) de forma segura pela posição 2
+        bottomNavigation.menu.getItem(2).isChecked = true
+
+        recyclerView?.layoutManager = LinearLayoutManager(context)
 
         postAdapter = PostAdapter(emptyList())
-        recyclerView.adapter = postAdapter
+        recyclerView?.adapter = postAdapter
 
         carregarPostsDoSupabase()
 
         btnAdd.setOnClickListener {
             abrirPopupCriarPost()
+        }
+
+        bottomNavigation.setOnItemSelectedListener { item ->
+            val titulo = item.title.toString().lowercase()
+            when {
+                titulo.contains("home") || titulo.contains("início") -> {
+                    parentFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).commit()
+                    true
+                }
+                titulo.contains("map") || titulo.contains("mapa") -> {
+                    parentFragmentManager.beginTransaction().replace(R.id.fragment_container, MapaFragment()).commit()
+                    true
+                }
+                titulo.contains("favorito") || titulo.contains("infinito") || titulo.contains("apoio") -> {
+                    true
+                }
+                titulo.contains("perfil") || titulo.contains("profile") || titulo.contains("config") -> {
+                    parentFragmentManager.beginTransaction().replace(R.id.fragment_container, ProfileFragment()).commit()
+                    true
+                }
+                else -> false
+            }
         }
     }
 
@@ -67,13 +94,12 @@ class ForumFragment : Fragment() {
     }
 
     private fun carregarPostsDeExemplo() {
-        // CORREÇÃO: Categoria agora recebe uma String não nula válida ("Apoio")
         postsDoBanco = mutableListOf(
-            Post(titulo = "Ansiedade pós-trauma", conteudo = "Respire fundo em ciclos de 4 segundos. O trauma não define o seu presente, você está segura.", categoria = "Apoio"),
-            Post(titulo = "Medo de andar à noite", conteudo = "Tente manter contato com uma amiga via chamada e use caminhos iluminados.", categoria = "Apoio"),
-            Post(titulo = "Acolhimento psicológico", conteudo = "Conversar sobre nossas dores em um ambiente confidencial alivia o peso emocional.", categoria = "Apoio"),
-            Post(titulo = "Apoiar uma amiga", conteudo = "Escute sem julgar, valide os sentimentos dela e ofereça apoio para procurar ajuda.", categoria = "Apoio"),
-            Post(titulo = "Limites saudáveis", conteudo = "Dizer 'não' é uma forma de proteção e autocuidado. Impor limites é essencial.", categoria = "Apoio")
+            Post(titulo = "Como lidar com a ansiedade pós-trauma?", conteudo = "Respire fundo em ciclos de 4 segundos. O trauma não define o seu presente. — Psicologia Unama", categoria = "Apoio"),
+            Post(titulo = "Sentem medo de andar sozinhas à noite?", conteudo = "Tente manter contato com uma amiga via chamada e use caminhos iluminados. — Anônimo", categoria = "Apoio"),
+            Post(titulo = "Qual a importância do acolhimento psicológico?", conteudo = "Conversar sobre nossas dores em um ambiente confidencial alivia o peso. — Estudante de Psi", categoria = "Apoio"),
+            Post(titulo = "Como apoiar uma amiga que sofreu agressão?", conteudo = "Escute sem julgar, valide os sentimentos dela e ofereça apoio firme. — Rede Aura", categoria = "Apoio"),
+            Post(titulo = "Como construir limites saudáveis?", conteudo = "Dizer 'não' é uma forma de proteção e autocuidado essencial para a mente. — Anônimo", categoria = "Apoio")
         )
         postAdapter.atualizarLista(postsDoBanco)
     }
@@ -107,22 +133,27 @@ class ForumFragment : Fragment() {
             }
 
             if (pergunta.isNotEmpty()) {
-                val conteudoFinal = "[$autor]: $pergunta"
+                val identificacaoAutor = "Postado por: $autor"
 
-                // CORREÇÃO: Criando o post com a categoria sendo String comum obrigatória
                 val novoPost = Post(
-                    titulo = "Pergunta da Comunidade",
-                    conteudo = conteudoFinal,
+                    titulo = pergunta,
+                    conteudo = identificacaoAutor,
                     categoria = "Geral"
                 )
 
                 postsDoBanco.add(0, novoPost)
-                postAdapter.atualizarLista(postsDoBanco)
+
+                activity?.runOnUiThread {
+                    postAdapter.atualizarLista(postsDoBanco)
+                    recyclerView?.scrollToPosition(0)
+                }
 
                 viewLifecycleOwner.lifecycleScope.launch {
                     try {
                         repository.salvarPost(novoPost)
-                        Toast.makeText(context, "Postado com sucesso!", Toast.LENGTH_SHORT).show()
+                        activity?.runOnUiThread {
+                            Toast.makeText(context, "Salvo no Supabase!", Toast.LENGTH_SHORT).show()
+                        }
                     } catch (e: Exception) {
                         Log.e("SupabaseForum", "Erro ao salvar no banco: ${e.message}")
                     }

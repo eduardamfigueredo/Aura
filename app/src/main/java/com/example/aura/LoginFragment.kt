@@ -36,8 +36,12 @@ class LoginFragment : Fragment() {
             } else {
                 Toast.makeText(context, "Bem-vinda, $nome!", Toast.LENGTH_SHORT).show()
 
+                // Salva na memória do celular que o usuário está logado
+                val sharedPreferences = requireActivity().getSharedPreferences("AuraPrefs", android.content.Context.MODE_PRIVATE)
+                sharedPreferences.edit().putBoolean("isLogged", true).apply()
+
                 // AGORA VAI PARA A HOME DE VERDADE:
-                // Substitui a tela de login pelo fragmento da Home dentro do container principal
+                // Sem addToBackStack para não voltar ao login se apertar o botão voltar do aparelho
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.fragment_container, HomeFragment())
                     .commit()
