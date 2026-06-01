@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/primary_purple">
 
-    <!-- Container do Cabeçalho (Logo + Nome) -->
     <LinearLayout
         android:id="@+id/headerContainer"
         android:layout_width="wrap_content"
@@ -55,6 +54,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/edt_nome"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="24dp"
@@ -67,6 +67,7 @@
             tools:ignore="TextContrastCheck" />
 
         <EditText
+            android:id="@+id/edt_email"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="12dp"
@@ -77,6 +78,7 @@
             android:importantForAutofill="no" />
 
         <EditText
+            android:id="@+id/edt_senha"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="12dp"
@@ -87,6 +89,7 @@
             android:importantForAutofill="no" />
 
         <Button
+            android:id="@+id/btn_entrar"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="24dp"
@@ -99,6 +102,7 @@
             tools:ignore="VisualLintButtonSize" />
 
         <TextView
+            android:id="@+id/txt_login_estudante"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

@@ -5,55 +5,33 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [OnboardingFirstFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class OnboardingFirstFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        // Inflate o layout para este fragmento
         return inflater.inflate(R.layout.fragment_onboarding_first, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment OnboardingFirstFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            OnboardingFirstFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    // Este método roda assim que o layout termina de ser desenhado na tela
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // 1. Encontra o botão "Próximo" pelo ID que você colocou no XML
+        val btnProximo = view.findViewById<Button>(R.id.btn_proximo)
+
+        // 2. Configura a ação de clique do botão
+        btnProximo.setOnClickListener {
+
+            // 3. Faz a troca do primeiro fragmento pelo segundo dentro da MainActivity
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, OnboardingSecondFragment()) // Troca de tela
+                .addToBackStack(null) // Permite que o usuário volte se apertar o botão voltar do celular
+                .commit()
+        }
     }
 }

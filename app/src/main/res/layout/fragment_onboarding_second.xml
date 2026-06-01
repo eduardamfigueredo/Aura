@@ -16,8 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btn_proximo_2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_setVerticalBias="0.4">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
             android:id="@+id/img_ilustracao_2"
@@ -65,6 +64,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="72dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
